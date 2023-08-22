@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'coffee/css/create.css' %}">
+    <title>Delete Coffee</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Virtual Coffee Shop</h1>
+        <p>Your Perfect Cup Awaits</p>
+    </header>
+    <div class="center-content">
+        <div class="container">
+            <h1>Delete Coffee</h1>
+            <p>Are you sure you want to delete the following coffee?</p>
+            <p><strong>Title:</strong> {{ coffee.title }}</p>
+            <p><strong>Description:</strong> {{ coffee.description }}</p>
+            <p><strong>Price:</strong> ${{ coffee.price }}</p>
+            <form method="post">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit">Delete</button>
+                <a class="btn btn-secondary" href="{% url 'coffee' %}">Cancel</a>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2023 Virtual Coffee Shop. All rights reserved.</p>
+    </div>
+</body>
+</html>

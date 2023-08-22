@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "itproger"
+version = "0.1.0"
+description = ""
+authors = ["dan9Protasenia <100715839+dan9Protasenia@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.4"
+psycopg2 = "^2.9.7"
+pillow = "^10.0.0"
+python-decouple = "^3.8"
+pytest-django = "^4.5.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

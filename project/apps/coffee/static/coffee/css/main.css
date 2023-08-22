@@ -1,0 +1,55 @@
+  body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ccc;
+        }
+        .menu-item img {
+            max-width: 100px;
+            border-radius: 5px;
+            margin-right: 1rem;
+        }
+        .menu-item h3 {
+            margin: 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: #fff;
+            font-size: 0.8rem;
+        }
+        /* Your existing styles */
+
+/* Add the following styles for <a> tags */
+a.menu-item-link {
+    text-decoration: none;
+    color: black;
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s ease-in-out;
+}
+
+a.menu-item-link:hover {
+    color: #007bff;
+}

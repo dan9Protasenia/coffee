@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'coffee/css/main.css' %}">
+    <title>Virtual Coffee Shop</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Virtual Coffee Shop</h1>
+        <p>Your Perfect Cup Awaits</p>
+    </header>
+    <div class="container">
+        {% if coffees %}
+            {% for coffee in coffees %}
+            <a class="menu-item-link" href="{% url 'info' coffee.pk %}">
+            <div class="menu-item">
+                <img src="{{ coffee.pictures.url }}" alt="{{ coffee.title }}">
+                <div>
+                    <h3>{{ coffee.title }}</h3>
+                    <p>{{ coffee.description }}</p>
+                </div>
+                <span>${{ coffee.price }}</span>
+            </div>
+
+            {% endfor %}
+        {% else %}
+            <p>No coffee available</p>
+        {% endif %}
+    </div>
+    <div class="footer">
+        <p>&copy; 2023 Virtual Coffee Shop. All rights reserved.</p>
+    </div>
+</body>
+</html>

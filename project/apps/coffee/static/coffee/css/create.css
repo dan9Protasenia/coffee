@@ -1,0 +1,66 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Стили для формы */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px; /* Немного уменьшил интервал */
+}
+
+.form-control {
+    width: 50%; /* Оставил ширину 100% */
+    padding: 10px;
+    border: 1.4px solid #ccc;
+    border-radius: 60px;
+    background-color: #f0f0f0;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+}
+
+.btn-success {
+    padding: 10px 20px; /* Увеличил горизонтальные отступы */
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-success:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для заголовка */
+header {
+    text-align: center;
+
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+}
+
+/* Стили для футера */
+.footer {
+    text-align: center;
+    background-color: #343a40;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

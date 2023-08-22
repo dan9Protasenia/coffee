@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/css/about.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <title>About Us - Virtual Coffee Shop</title>
+</head>
+<body>
+<header>
+    <aside>
+        <ul>
+            <a href="{% url 'coffee'%}">
+                <li><i class="fas fa-home"></i></li>
+            </a>
+        </ul>
+    </aside>
+    <h1>About Us</h1>
+    <p>Get to Know Our Story</p>
+
+</header>
+<div class="container">
+    <div class="about-content">
+        <div class="about-image">
+            <img src="{% static 'main/img/about_image.jpg' %}" alt="About Us">
+        </div>
+        <div class="about-text">
+            <h2>Our Journey</h2>
+            <p>We started as a small team of coffee enthusiasts who wanted to bring the joy of a perfect cup to
+                everyone, even in the virtual world. Our mission is to provide an experience that transcends
+                boundaries.</p>
+            <h2>Quality First</h2>
+            <p>From sourcing the finest coffee beans to crafting unique blends, we prioritize quality at every step. Our
+                commitment to excellence is what sets us apart.</p>
+            <h2>Join Us</h2>
+            <p>If you share our passion for great coffee and innovation, we invite you to join our virtual coffee
+                community. Together, let's explore the world of coffee like never before.</p>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2023 Virtual Coffee Shop. All rights reserved.</p>
+</div>
+</body>
+</html>
