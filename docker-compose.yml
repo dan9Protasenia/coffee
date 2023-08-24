@@ -1,0 +1,38 @@
+version: '3'
+services:
+  myapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=django-insecure-(x5f&as21wwk!()3ncl_+6#6)u3zb0gm+r3u546i80u%sab5gi
+      - DB_NAME=coffee
+      - DB_USER=postgres
+      - DB_PASSWORD=danik200201
+      - DB_HOST=postgres
+      - DB_PORT=5432
+    depends_on:
+      - postgres
+    command: ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=coffee
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=danik200201
+  migrations:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SECRET_KEY=django-insecure-(x5f&as21wwk!()3ncl_+6#6)u3zb0gm+r3u546i80u%sab5gi
+      - DB_NAME=coffee
+      - DB_USER=postgres
+      - DB_PASSWORD=danik200201
+      - DB_HOST=postgres
+      - DB_PORT=5432
+    depends_on:
+      - postgres
+    command: ["poetry", "run", "python", "manage.py", "migrate"]

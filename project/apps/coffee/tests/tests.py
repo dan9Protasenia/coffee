@@ -1,38 +1,38 @@
 import pytest
 from django.urls import reverse
 
-from .models import Coffee
+from project.apps.coffee.models import Coffee
+from project.apps.coffee.tests.constants import (
+    Title,
+    Description,
+    Price,
+    Test_Image,
+    Info,
+    Update_Title,
+    Updated_Description,
+    Update_Price,
+    Updated_Info
+)
+from .factories import CoffeeFactory
+
+pytestmark = pytest.mark.django_db
 
 
-@pytest.mark.django_db
 def test_connect(client):
     response = client.get(reverse('coffee'))
     assert response.status_code == 200
 
 
-@pytest.fixture
-def create_coffee():
-    coffee_object = Coffee.objects.create(
-        title='Test Coffee',
-        description='Test Description',
-        price=10,
-        pictures='test_image.jpg',
-        info='Test Info'
-    )
-    return coffee_object
-
-
-@pytest.mark.django_db
 def test_create(client):
     response = client.get(reverse('create'))
     assert response.status_code == 200
 
     data = {
-        'title': 'Title',
-        'description': 'Description',
-        'price': 10,
-        'pictures': 'my_image.jpg',
-        'info': 'Info'
+        'title': Title,
+        'description': Description,
+        'price': Price,
+        'pictures': Test_Image,
+        'info': Info
     }
 
     response = client.post(reverse('create'), data)
@@ -41,9 +41,8 @@ def test_create(client):
     assert Coffee.objects.exists()
 
 
-@pytest.mark.django_db
-def test_info(client, create_coffee):
-    coffee_object = create_coffee
+def test_info(client):
+    coffee_object = CoffeeFactory()
     url = reverse('info', kwargs={'pk': coffee_object.pk})
 
     response = client.get(url)
@@ -58,36 +57,34 @@ def test_info(client, create_coffee):
     assert response.status_code == 404
 
 
-@pytest.mark.django_db
-def test_update(client, create_coffee):
-    coffee_object = create_coffee
+def test_update(client):
+    coffee_object = CoffeeFactory()
     url = reverse('update', kwargs={'pk': coffee_object.pk})
 
     response = client.get(url)
     assert response.status_code == 200
 
     update_data = {
-        'title': 'Updated Coffee',
-        'description': 'Updated Description',
-        'price': 15,
-        'info': 'Updated Info'
+        'title': Update_Title,
+        'description': Updated_Description,
+        'price': Update_Price,
+        'info': Updated_Info
     }
 
     response = client.post(url, update_data)
 
     coffee_object.refresh_from_db()
 
-    assert coffee_object.title == update_data['title']
-    assert coffee_object.description == update_data['description']
-    assert coffee_object.price == update_data['price']
-    assert coffee_object.info == update_data['info']
+    assert coffee_object.title == update_data.get('title')
+    assert coffee_object.description == update_data.get('description')
+    assert coffee_object.price == update_data.get('price')
+    assert coffee_object.info == update_data.get('info')
 
     assert response.status_code == 302
 
 
-@pytest.mark.django_db
-def test_delete(client, create_coffee):
-    coffee_object = create_coffee
+def test_delete(client):
+    coffee_object = CoffeeFactory()
     url = reverse('delete', kwargs={'pk': coffee_object.pk})
 
     response = client.post(url)
