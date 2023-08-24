@@ -1,0 +1,29 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build_job:
+  stage: build
+  script:
+    - echo "Building the application..."
+    - apk update && apk add --no-cache build-base python3-dev postgresql-dev
+    - mkdir /app
+    - pip install poetry
+    - poetry config virtualenvs.create false
+    - poetry install
+    - echo "Build completed."
+
+test_job:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - poetry run python project/apps/coffee/tests/test.py
+
+deploy_job:
+  stage: deploy
+  script:
+    - echo "Deploying the application..."
+    - poetry run python manage.py migrate
+    - docker-compose up -d
+
