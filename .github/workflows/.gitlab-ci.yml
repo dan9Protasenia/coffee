@@ -1,5 +1,8 @@
 image: python:3.10
 
+on:
+  push:
+
 stages:
   - build
   - lint
