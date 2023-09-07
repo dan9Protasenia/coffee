@@ -1,23 +1,19 @@
-  body {
+        body {
             font-family: Arial, sans-serif;
             background-color: #f2f2f2;
             margin: 0;
             padding: 0;
         }
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-        }
+
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
             background-color: #fff;
-            border-radius: 10px;
+            border-radius: 40px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         .menu-item {
             display: flex;
             justify-content: space-between;
@@ -25,14 +21,17 @@
             padding: 1rem 0;
             border-bottom: 1px solid #ccc;
         }
+
         .menu-item img {
-            max-width: 100px;
-            border-radius: 5px;
-            margin-right: 1rem;
+            max-width: 200px;
+            border-radius: 20px;
+            margin-right: 5rem;
         }
+
         .menu-item h3 {
             margin: 0;
         }
+
         .footer {
             text-align: center;
             padding: 1rem;
@@ -40,16 +39,98 @@
             color: #fff;
             font-size: 0.8rem;
         }
-        /* Your existing styles */
 
-/* Add the following styles for <a> tags */
-a.menu-item-link {
-    text-decoration: none;
-    color: black;
-    font-family: 'Arial', sans-serif;
-    transition: color 0.3s ease-in-out;
-}
+        a.menu-item-link {
+            text-decoration: none;
+            color: black;
+            font-family: 'Arial', sans-serif;
+            transition: color 0.4s ease-in-out;
+        }
 
-a.menu-item-link:hover {
-    color: #007bff;
-}
+        a.menu-item-link:hover {
+            color: brown;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem 0;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        .header-content h1,
+        .header-content p {
+            margin: 0;
+        }
+
+        .fill {
+            color: #a972cb;
+            border: 2px solid #a972cb;
+            padding: 1em 2em;
+            transition: 0.25s;
+            text-decoration: none;
+            position: relative;
+            font-weight: 400;
+            margin: 0.5em;
+            display: inline-block;
+        }
+
+        .fill:hover,
+        .fill:focus {
+            box-shadow: inset 0 0 0 2em #ef6eae;
+        }
+
+        .horizontal-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .horizontal-list li {
+            margin-right: 1px;
+            align-items: center;
+        }
+
+        .btn-1 {
+          text-align: center;
+          display: inline-block;
+          padding: 15px 40px;
+          cursor: pointer;
+          letter-spacing: 2px;
+          position:relative;
+          overflow:hidden;
+          margin: 0 20px;
+          border-bottom: 2px solid black;
+          font-style: italic;
+          text-decoration: none;
+          text-decoration-color: black;
+          border-bottom: 2px solid black;
+          font-weight: bold;
+          font-family: Comic Sans MS, Comic Sans, cursive
+        }
+
+        .btn-1:before {
+          content: "";
+          position: absolute;
+          width: 0;
+          background : black;
+          left: 45%;
+          height: 2px;
+          top: 0;
+          transition: all .3s;
+          opacity: 1;
+        }
+
+        .btn-1:hover:before {
+          width: 100%;
+          left:0;
+        }

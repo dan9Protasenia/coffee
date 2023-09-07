@@ -9,7 +9,7 @@ class Coffee(models.Model):
     info = models.TextField('Описание', max_length=1000)
 
     def __str__(self):
-        return self.title
+        return f'{self.pk}, {self.title}, {self.description}, {self.price}, {self.info}'
 
     def get_absolute_url(self):
         return f'/coffee'

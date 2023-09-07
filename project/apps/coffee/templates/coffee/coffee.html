@@ -1,38 +1,50 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'coffee/css/main.css' %}">
     <title>Virtual Coffee Shop</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'coffee/css/main.css' %}">
 </head>
 <body>
-    <header>
+
+<header>
+    <div class="header-content">
         <h1>Welcome to Virtual Coffee Shop</h1>
         <p>Your Perfect Cup Awaits</p>
-    </header>
-    <div class="container">
-        {% if coffees %}
-            {% for coffee in coffees %}
-            <a class="menu-item-link" href="{% url 'info' coffee.pk %}">
-            <div class="menu-item">
-                <img src="{{ coffee.pictures.url }}" alt="{{ coffee.title }}">
-                <div>
-                    <h3>{{ coffee.title }}</h3>
-                    <p>{{ coffee.description }}</p>
-                </div>
-                <span>${{ coffee.price }}</span>
-            </div>
+    </div>
+</header>
+<nav>
+    <ul class="horizontal-list">
+        <li><a href="{% url 'about' %}" class="btn-1">About Us</a></li>
+        <li><a href="{% url 'contact' %}" class="btn-1">Contact Us</a></li>
+        <li><a href="#" class="btn-1">Your Account</a></li>
+    </ul>
+</nav>
 
-            {% endfor %}
-        {% else %}
-            <p>No coffee available</p>
-        {% endif %}
-    </div>
-    <div class="footer">
-        <p>&copy; 2023 Virtual Coffee Shop. All rights reserved.</p>
-    </div>
+<div class="container">
+    {% if coffees %}
+    {% for coffee in coffees %}
+    <a class="menu-item-link" href="{% url 'info' coffee.pk %}">
+        <div class="menu-item">
+            <img src="{{ coffee.pictures.url }}" alt="{{ coffee.title }}">
+            <div>
+                <h3>{{ coffee.title }}</h3>
+                <p>{{ coffee.description }}</p>
+            </div>
+            <span>${{ coffee.price }}</span>
+        </div>
+    </a>
+    {% endfor %}
+    {% else %}
+    <p>No coffee available</p>
+    {% endif %}
+</div>
+
+<div class="footer">
+    <p>&copy; 2023 Virtual Coffee Shop. All rights reserved.</p>
+</div>
+
 </body>
 </html>
