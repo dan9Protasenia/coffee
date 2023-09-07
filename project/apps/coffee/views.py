@@ -12,6 +12,10 @@ def coffee(request):
     return render(request, 'coffee/coffee.html', {'coffees': coffees})
 
 
+def contact(request):
+    return render(request, 'coffee/contact.html', )
+
+
 class Create(CreateView):
     model = Coffee
     template_name = 'coffee/create_coffee.html'
