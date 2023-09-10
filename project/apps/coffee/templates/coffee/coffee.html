@@ -17,8 +17,8 @@
 </header>
 <nav>
     <ul class="horizontal-list">
-        <li><a href="{% url 'about' %}" class="btn-1">About Us</a></li>
-        <li><a href="{% url 'contact' %}" class="btn-1">Contact Us</a></li>
+        <li><a href="{% url 'coffee:about' %}" class="btn-1">About Us</a></li>
+        <li><a href="{% url 'coffee:contact' %}" class="btn-1">Contact Us</a></li>
         <li><a href="#" class="btn-1">Your Account</a></li>
     </ul>
 </nav>
@@ -26,7 +26,7 @@
 <div class="container">
     {% if coffees %}
     {% for coffee in coffees %}
-    <a class="menu-item-link" href="{% url 'info' coffee.pk %}">
+    <a class="menu-item-link" href="{% url 'coffee:info' coffee.pk %}">
         <div class="menu-item">
             <img src="{{ coffee.pictures.url }}" alt="{{ coffee.title }}">
             <div>

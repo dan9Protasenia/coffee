@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Coffee
+from .models import Coffee, Feedback
 
 
 class CoffeeForm(forms.ModelForm):
@@ -28,5 +28,26 @@ class CoffeeForm(forms.ModelForm):
             "pictures": forms.ClearableFileInput(attrs={
                 'class': 'form-control',
                 'accept': 'image/*'
+            })
+        }
+
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ['user', 'text', 'rating']
+
+        widgets = {
+            "user": forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Name user'
+            }),
+            "text": forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Description'
+            }),
+            "rating": forms.NumberInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'rating'
             })
         }

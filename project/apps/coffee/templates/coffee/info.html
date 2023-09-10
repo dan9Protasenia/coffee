@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'coffee/css/about.css' %}">
-
+    <link rel="stylesheet" href="{% static 'coffee/css/info.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <title>Virtual Coffee Shop</title>
 </head>
 <body>
@@ -16,11 +16,40 @@
 </header>
 <div class="container">
     <div class="menu-item">
-<!--        <img src="{{ coffee.pictures.url }}" alt="{{ coffee.title }}">-->
         <h1>{{ coffee.title }}</h1>
         <p>{{ coffee.info }}</p>
+        <ul class="horizontal-list">
+        <a href="{% url 'coffee:coffee'  %}" class="btn-1">Home</a>
+        </ul>
     </div>
 </div>
+
+<nav>
+    <ul class="horizontal-list">
+        <li><a href="{% url 'coffee:add_feedback' pk=coffee.pk %}" class="btn-1">Leave Your Feedback Here</a></li>
+    </ul>
+</nav>
+<p></p>>
+<div class="container">
+<h2>Your feedback helps to make this coffee even tastier:</h2>
+        <ul>
+            {% for feedback in feedbacks %}
+                <p>{{ feedback.user }}</p>
+                <li>
+                    <div class="rating">
+                        {% for i in "12345" %}
+                            {% if i|add:0 == feedback.rating %}
+                                <i class="fas fa-star"></i>
+                            {% else %}
+                                <i class="far fa-star"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {{ feedback.text }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 <div class="footer">
     <p>&copy; 2023 Virtual Coffee Shop. All rights reserved.</p>
 </div>
