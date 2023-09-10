@@ -17,3 +17,13 @@ class Coffee(models.Model):
     class Meta:
         verbose_name = 'Кофе'
         verbose_name_plural = 'Кофе'
+
+
+class Feedback(models.Model):
+    user = models.CharField('Пользователь', max_length=50)
+    text = models.TextField('Текст отзыва')
+    rating = models.IntegerField('Рейтинг')
+    coffees = models.ForeignKey(Coffee, on_delete=models.CASCADE, related_name='feedbacks')
+
+    def __str__(self):
+        return self.user

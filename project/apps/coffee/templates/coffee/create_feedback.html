@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'coffee/css/create.css' %}">
+    <title>Create Rating</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Virtual Coffee Shop</h1>
+        <p>Your Perfect Cup Awaits</p>
+    </header>
+    <div class="center-content">
+        <div class="container">
+            <h1>Form for creating rating</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.user }}<br>
+                {{ form.text }}<br>
+                {{ form.rating }}<br>
+                <span>{{ error }}</span>
+                <button class="btn btn-success" type="submit">Add Rating</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2023 Virtual Coffee Shop. All rights reserved.</p>
+    </div>
+</body>
+</html>
