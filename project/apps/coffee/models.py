@@ -27,3 +27,8 @@ class Feedback(models.Model):
 
     def __str__(self):
         return self.user
+
+    class Meta:
+        verbose_name = "Отзывы"
+        verbose_name_plural = "Отзывы"
+        ordering = ['-rating']

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Coffee Shop</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'coffee/css/main.css' %}">
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <h1>Welcome to Virtual Coffee Shop</h1>
+        <p>Your Perfect Cup Awaits</p>
+    </div>
+</header>
+<nav>
+    <ul class="horizontal-list">
+        <li><a href="{% url 'coffee:about' %}" class="btn-1">About Us</a></li>
+        <li><a href="{% url 'coffee:contact' %}" class="btn-1">Contact Us</a></li>
+        <li><a href="{% url 'coffee:coffee' %}" class="btn-1">Home</a></li>
+    </ul>
+</nav>
+
+<form class="registration-form" method="post">
+    {% csrf_token %}
+    <label for="id_username">Username</label>
+    <input type="text" name="username" id="id_username" placeholder="Username">
+
+    <label for="id_first_name">First Name</label>
+    <input type="text" name="first_name" id="id_first_name" placeholder="First Name">
+
+    <label for="id_last_name">Last Name</label>
+    <input type="text" name="last_name" id="id_last_name" placeholder="Last Name">
+
+    <label for="id_email">Email</label>
+    <input type="email" name="email" id="id_email" placeholder="Email">
+
+    <label for="id_password1">Password</label>
+    <input type="password" name="password1" id="id_password1" placeholder="Password">
+
+    <label for="id_password2">Confirm Password</label>
+    <input type="password" name="password2" id="id_password2" placeholder="Confirm Password">
+
+    <button type="submit">Register</button>
+    <p>If you already have an existing account, click on <a href="{% url 'coffee:login' %}">Sign up</a></p>
+</form>
+
+<div class="footer">
+    <p>&copy; 2023 Virtual Coffee Shop. All rights reserved.</p>
+</div>
+
+</body>
+</html>
+

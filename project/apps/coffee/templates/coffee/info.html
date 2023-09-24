@@ -29,11 +29,12 @@
         <li><a href="{% url 'coffee:add_feedback' pk=coffee.pk %}" class="btn-1">Leave Your Feedback Here</a></li>
     </ul>
 </nav>
-<p></p>>
+<p></p>
 <div class="container">
-<h2>Your feedback helps to make this coffee even tastier:</h2>
-        <ul>
-            {% for feedback in feedbacks %}
+    <h2>Your feedback helps to make this coffee even tastier:</h2>
+    <ul>
+        {% for feedback in feedbacks %}
+            <div class="review-divider">
                 <p>{{ feedback.user }}</p>
                 <li>
                     <div class="rating">
@@ -47,9 +48,11 @@
                     </div>
                     {{ feedback.text }}
                 </li>
-            {% endfor %}
-        </ul>
-    </div>
+            </div>
+        {% endfor %}
+    </ul>
+</div>
+
 <div class="footer">
     <p>&copy; 2023 Virtual Coffee Shop. All rights reserved.</p>
 </div>

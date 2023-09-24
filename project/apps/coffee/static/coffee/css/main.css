@@ -134,3 +134,59 @@
           width: 100%;
           left:0;
         }
+
+/* Стили для окна регистрации */
+.registration-form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Центрирование по горизонтали */
+    width: 50%; /* Ширина формы */
+    max-width: 500px; /* Максимальная ширина формы */
+}
+
+.registration-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.registration-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px; /* Увеличиваем расстояние между полями */
+}
+
+/* Удаляем стандартные стили для инпутов */
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5; /* Фон инпутов */
+}
+
+/* Стили для кнопки */
+.registration-form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Занимает всю доступную ширину */
+    font-size: 16px;
+}
+
+.registration-form button:hover {
+    background-color: #0056b3;
+}
+.error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+

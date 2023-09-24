@@ -1,21 +1,76 @@
+from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView
 from django.core.files.base import ContentFile
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.shortcuts import render, reverse, redirect
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
+from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView
 
-from .forms import CoffeeForm, FeedbackForm
+from .forms import CoffeeForm, FeedbackForm, RegisterUserForm, LoginUserForm
 from .models import Coffee, Feedback
 
 
-def coffee(request):
-    coffees = Coffee.objects.order_by('price')
-    return render(request, 'coffee/coffee.html', {'coffees': coffees})
+class LoginUser(LoginView):
+    form_class = LoginUserForm
+    template_name = 'coffee/login.html'
+
+    def get_success_url(self):
+        return reverse_lazy('coffee:coffee')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('coffee:login')
+
+
+class SignUp(CreateView):
+    form_class = RegisterUserForm
+    success_url = reverse_lazy("coffee:coffee")
+    template_name = 'coffee/registration.html'
+
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     c_def = self.get_user_context(title='Registration')
+    #     return dict(list(context.items()) + list(c_def.items()))
+
+
+class CoffeeList(ListView):
+    model = Coffee
+    template_name = 'coffee/coffee.html'
+    context_object_name = 'coffees'
+    queryset = Coffee.objects.order_by('price')
+
+
+#   def coffee(request):
+#       coffees = Coffee.objects.order_by('price')
+#       return render(request, 'coffee/coffee.html', {'coffees': coffees})
 
 
 def contact(request):
     return render(request, 'coffee/contact.html', )
+
+
+# def user_login(request):
+#     if request.method == "POST":
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             cd = form.cleaned_data
+#             user = authenticate(request,
+#                                 user_login=cd['username'],
+#                                 password=cd['password']
+#                                 )
+#             if user is not None:
+#                 if user.is_active():
+#                     login(request, user)
+#                     return HttpResponse('Authenticated successfully')
+#                 else:
+#                     return HttpResponse('Disabled account')
+#         else:
+#             return HttpResponse('Invalid logun')
+#     else:
+#         form = LoginForm()
+#     return render(request, 'login.html', {'form': form})
 
 
 class Create(CreateView):
@@ -76,7 +131,6 @@ class CreateFeedback(CreateView):
         feedback.coffees = coffees
         feedback.save()
 
-        # Используйте reverse_lazy для получения URL
         return HttpResponseRedirect(reverse('coffee:info', kwargs={'pk': coffee_id}))
 
 # def add_feedback(request, pk):

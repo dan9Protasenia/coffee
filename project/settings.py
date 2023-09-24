@@ -39,6 +39,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.contrib.auth',
+    # 'django.contrib.contenttypes'
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -119,3 +121,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'project.apps.coffee', 'media')
 
 # TEST_RUNNER = 'pytest_django.runner.DiscoverRunner'
+
+LOGIN_REDIRECT_URL = '/'

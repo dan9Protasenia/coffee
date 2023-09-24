@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'coffee/css/create.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <title>Create Rating</title>
 </head>
 <body>
@@ -19,7 +20,14 @@
                 {% csrf_token %}
                 {{ form.user }}<br>
                 {{ form.text }}<br>
-                {{ form.rating }}<br>
+                <div class="rating">
+                    <span class="star" data-rating="1">☆</span>
+                    <span class="star" data-rating="2">☆</span>
+                    <span class="star" data-rating="3">☆</span>
+                    <span class="star" data-rating="4">☆</span>
+                    <span class="star" data-rating="5">☆</span>
+                </div>
+                <input type="hidden" name="rating" value="1" id="rating">
                 <span>{{ error }}</span>
                 <button class="btn btn-success" type="submit">Add Rating</button>
             </form>
@@ -28,5 +36,19 @@
     <div class="footer">
         <p>&copy; 2023 Virtual Coffee Shop. All rights reserved.</p>
     </div>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.querySelector('#rating');
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const rating = star.getAttribute('data-rating');
+                ratingInput.value = rating;
+                stars.forEach(s => s.classList.remove('selected'));
+                star.classList.add('selected');
+            });
+        });
+    </script>
 </body>
 </html>
