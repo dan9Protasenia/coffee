@@ -19,7 +19,11 @@
     <ul class="horizontal-list">
         <li><a href="{% url 'coffee:about' %}" class="btn-1">About Us</a></li>
         <li><a href="{% url 'coffee:contact' %}" class="btn-1">Contact Us</a></li>
-        <li><a href="#" class="btn-1">Your Account</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'coffee:logout' %}" class="btn-1">Log out</a></li>
+        {% else %}
+            <li><a href="{% url 'coffee:login' %}" class="btn-1">Log in</a></li>
+        {% endif %}
     </ul>
 </nav>
 

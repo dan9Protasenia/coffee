@@ -19,6 +19,7 @@
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.text }}<br>
+                {{ form.captcha }}<br>
                 <div class="rating">
                     <span class="star" data-rating="1">☆</span>
                     <span class="star" data-rating="2">☆</span>

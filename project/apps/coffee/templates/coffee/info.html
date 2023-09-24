@@ -26,7 +26,9 @@
 
 <nav>
     <ul class="horizontal-list">
-        <li><a href="{% url 'coffee:add_feedback' pk=coffee.pk %}" class="btn-1">Leave Your Feedback Here</a></li>
+        <li>
+            <a href="#" class="btn-1" id="feedback-button" data-authenticated="{% if request.user.is_authenticated %}true{% else %}false{% endif %}">Leave Your Feedback Here</a>
+        </li>
     </ul>
 </nav>
 <p></p>
@@ -52,7 +54,16 @@
         {% endfor %}
     </ul>
 </div>
-
+<script>
+    document.getElementById('feedback-button').addEventListener('click', function(e) {
+        e.preventDefault();
+        {% if not request.user.is_authenticated %}
+            alert("You must log in to leave a feedback.");
+        {% else %}
+            window.location.href = "{% url 'coffee:add_feedback' pk=coffee.pk %}";
+        {% endif %}
+    });
+</script>
 <div class="footer">
     <p>&copy; 2023 Virtual Coffee Shop. All rights reserved.</p>
 </div>
