@@ -60,6 +60,53 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-debug-toolbar"
+version = "4.2.0"
+description = "A configurable set of panels that display various debug information about the current request/response."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_debug_toolbar-4.2.0-py3-none-any.whl", hash = "sha256:af99128c06e8e794479e65ab62cc6c7d1e74e1c19beb44dcbf9bad7a9c017327"},
+    {file = "django_debug_toolbar-4.2.0.tar.gz", hash = "sha256:bc7fdaafafcdedefcc67a4a5ad9dac96efd6e41db15bc74d402a54a2ba4854dc"},
+]
+
+[package.dependencies]
+django = ">=3.2.4"
+sqlparse = ">=0.2"
+
+[[package]]
+name = "django-ranged-response"
+version = "0.2.0"
+description = "Modified Django FileResponse that adds Content-Range headers."
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-ranged-response-0.2.0.tar.gz", hash = "sha256:f71fff352a37316b9bead717fc76e4ddd6c9b99c4680cdf4783b9755af1cf985"},
+]
+
+[package.dependencies]
+django = "*"
+
+[[package]]
+name = "django-simple-captcha"
+version = "0.5.18"
+description = "A very simple, yet powerful, Django captcha application"
+optional = false
+python-versions = "*"
+files = [
+    {file = "django-simple-captcha-0.5.18.tar.gz", hash = "sha256:6e1fcc4f4005f7d69ee7a2e59a7e863b5d3918f36a85a4d811498984aecc48ce"},
+    {file = "django_simple_captcha-0.5.18-py2.py3-none-any.whl", hash = "sha256:567ad84fa64c86508c679b8425cc1410c44b3cd6467e54f8d31cf077d9366407"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+django-ranged-response = "0.2.0"
+Pillow = ">=6.2.0"
+
+[package.extras]
+test = ["testfixtures"]
+
+[[package]]
 name = "factory-boy"
 version = "3.3.0"
 description = "A versatile test fixtures replacement based on thoughtbot's factory_bot for Ruby."
@@ -399,4 +446,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "9e75ae57d0be6c7e93977a532596fd032db345459dcfb6bad8269191998a27be"
+content-hash = "dff3f4eae735d1bf8443480d28c8fb1a350467159e7a6d22601855808430be8a"

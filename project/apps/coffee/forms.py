@@ -1,3 +1,4 @@
+from captcha.fields import CaptchaField
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
@@ -58,9 +59,11 @@ class CoffeeForm(forms.ModelForm):
 
 
 class FeedbackForm(forms.ModelForm):
+    captcha = CaptchaField()
+
     class Meta:
         model = Feedback
-        fields = ['text', 'rating']
+        fields = ['text', 'rating', 'captcha']
 
         widgets = {
             "text": forms.TextInput(attrs={
