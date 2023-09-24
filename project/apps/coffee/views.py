@@ -128,6 +128,10 @@ class CreateFeedback(CreateView):
             raise Http404("Coffee does not exist")
 
         feedback = form.save(commit=False)
+
+        if self.request.user.is_authenticated:
+            feedback.user = self.request.user.username
+
         feedback.coffees = coffees
         feedback.save()
 

@@ -18,7 +18,6 @@
             <h1>Form for creating rating</h1>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.user }}<br>
                 {{ form.text }}<br>
                 <div class="rating">
                     <span class="star" data-rating="1">☆</span>
