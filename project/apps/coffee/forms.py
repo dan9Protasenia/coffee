@@ -60,13 +60,9 @@ class CoffeeForm(forms.ModelForm):
 class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
-        fields = ['user', 'text', 'rating']
+        fields = ['text', 'rating']
 
         widgets = {
-            "user": forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Name user'
-            }),
             "text": forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Description'
